@@ -1,0 +1,178 @@
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(date 1558853247742)
++++ app/src/main/res/layout/activity_main.xml	(revision 897dd04a3e1d9dcffc7232f8a8e4f0f6dbd2d17f)
+@@ -4,8 +4,15 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    android:id="@+id/container"
+     tools:context=".MainActivity">
+ 
++    <TextView
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:text="Hello World!"
++        app:layout_constraintBottom_toBottomOf="parent"
++        app:layout_constraintLeft_toLeftOf="parent"
++        app:layout_constraintRight_toRightOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
+ 
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/fragment_infleter.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_infleter.xml	(date 1558853728195)
++++ app/src/main/res/layout/fragment_infleter.xml	(date 1558853728195)
+@@ -1,9 +0,0 @@
+-<?xml version="1.0" encoding="utf-8"?>
+-<android.support.constraint.ConstraintLayout
+-    xmlns:android="http://schemas.android.com/apk/res/android"
+-    android:layout_width="match_parent"
+-    android:layout_height="match_parent"
+-    android:background="#aea"
+-    >
+-
+-</android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: unnamed.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- unnamed.patch	(date 1558853816164)
++++ unnamed.patch	(date 1558853816164)
+@@ -1,85 +0,0 @@
+-Index: app/src/main/res/layout/activity_main.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/activity_main.xml	(revision 897dd04a3e1d9dcffc7232f8a8e4f0f6dbd2d17f)
+-+++ app/src/main/res/layout/activity_main.xml	(date 1558853247742)
+-@@ -4,15 +4,8 @@
+-     xmlns:tools="http://schemas.android.com/tools"
+-     android:layout_width="match_parent"
+-     android:layout_height="match_parent"
+-+    android:id="@+id/container"
+-     tools:context=".MainActivity">
+- 
+--    <TextView
+--        android:layout_width="wrap_content"
+--        android:layout_height="wrap_content"
+--        android:text="Hello World!"
+--        app:layout_constraintBottom_toBottomOf="parent"
+--        app:layout_constraintLeft_toLeftOf="parent"
+--        app:layout_constraintRight_toRightOf="parent"
+--        app:layout_constraintTop_toTopOf="parent" />
+- 
+- </android.support.constraint.ConstraintLayout>
+-\ No newline at end of file
+-Index: app/src/main/res/layout/fragment_infleter.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/res/layout/fragment_infleter.xml	(date 1558853728195)
+-+++ app/src/main/res/layout/fragment_infleter.xml	(date 1558853728195)
+-@@ -0,0 +1,9 @@
+-+<?xml version="1.0" encoding="utf-8"?>
+-+<android.support.constraint.ConstraintLayout
+-+    xmlns:android="http://schemas.android.com/apk/res/android"
+-+    android:layout_width="match_parent"
+-+    android:layout_height="match_parent"
+-+    android:background="#aea"
+-+    >
+-+
+-+</android.support.constraint.ConstraintLayout>
+-\ No newline at end of file
+-Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558853547806)
+-+++ app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558853547806)
+-@@ -0,0 +1,19 @@
+-+package mainactivity.musicplayer.example.com.peger;
+-+
+-+import android.os.Bundle;
+-+import android.support.annotation.NonNull;
+-+import android.support.annotation.Nullable;
+-+import android.support.v4.app.Fragment;
+-+import android.view.LayoutInflater;
+-+import android.view.View;
+-+import android.view.ViewGroup;
+-+
+-+public class SampleFragment extends Fragment {
+-+
+-+    @Nullable
+-+    @Override
+-+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+-+       View view = inflater.inflate(R.layout.fragment_infleter, container, false);
+-+       return view;
+-+    }
+-+}
+-Index: .idea/vcs.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+---- .idea/vcs.xml	(date 1558852673455)
+-+++ .idea/vcs.xml	(date 1558852673455)
+-@@ -0,0 +1,6 @@
+-+<?xml version="1.0" encoding="UTF-8"?>
+-+<project version="4">
+-+  <component name="VcsDirectoryMappings">
+-+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-+  </component>
+-+</project>
+-\ No newline at end of file
+Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558853547806)
++++ app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558853547806)
+@@ -1,19 +0,0 @@
+-package mainactivity.musicplayer.example.com.peger;
+-
+-import android.os.Bundle;
+-import android.support.annotation.NonNull;
+-import android.support.annotation.Nullable;
+-import android.support.v4.app.Fragment;
+-import android.view.LayoutInflater;
+-import android.view.View;
+-import android.view.ViewGroup;
+-
+-public class SampleFragment extends Fragment {
+-
+-    @Nullable
+-    @Override
+-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+-       View view = inflater.inflate(R.layout.fragment_infleter, container, false);
+-       return view;
+-    }
+-}
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1558852673455)
++++ .idea/vcs.xml	(date 1558852673455)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file

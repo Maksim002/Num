@@ -1,0 +1,415 @@
+Index: app/src/main/res/layout/item_sample.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/item_sample.xml	(date 1558856077542)
++++ app/src/main/res/layout/item_sample.xml	(date 1558856077542)
+@@ -0,0 +1,17 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="wrap_content"
++    xmlns:app="http://schemas.android.com/apk/res-auto">
++
++    <TextView
++        android:id="@+id/text_l"
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:padding="16dp"
++        app:layout_constraintTop_toTopOf="parent"
++        />
++
++
++
++</android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/ViewPegerAdaptor.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/mainactivity/musicplayer/example/com/peger/ViewPegerAdaptor.java	(date 1558858522271)
++++ app/src/main/java/mainactivity/musicplayer/example/com/peger/ViewPegerAdaptor.java	(date 1558858522271)
+@@ -0,0 +1,32 @@
++package mainactivity.musicplayer.example.com.peger;
++
++import android.support.v4.app.Fragment;
++import android.support.v4.app.FragmentManager;
++import android.support.v4.app.FragmentPagerAdapter;
++
++import java.util.ArrayList;
++import java.util.List;
++
++public class ViewPegerAdaptor extends FragmentPagerAdapter {
++
++    List<Fragment> list = new ArrayList<>();
++
++    public ViewPegerAdaptor(FragmentManager fm) {
++        super(fm);
++    }
++
++    @Override
++    public Fragment getItem(int i) {
++        return list.get(i);
++    }
++
++    @Override
++    public int getCount() {
++        return list.size();
++    }
++    public void setList(List<Fragment> list){
++        this.list = list;
++        notifyDataSetChanged();
++
++    }
++}
+Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/Adaptar.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/mainactivity/musicplayer/example/com/peger/Adaptar.java	(date 1558856198332)
++++ app/src/main/java/mainactivity/musicplayer/example/com/peger/Adaptar.java	(date 1558856198332)
+@@ -0,0 +1,29 @@
++package mainactivity.musicplayer.example.com.peger;
++
++import android.content.Context;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.ArrayAdapter;
++import android.widget.TextView;
++
++import java.util.List;
++
++public class Adaptar extends ArrayAdapter<String> {
++
++    public Adaptar(Context context, List<String> list){
++        super(context, 0 , list);
++    }
++
++    @Override
++    public View getView(int position, View convertView, ViewGroup parent) {
++            if (convertView == null){
++                convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_sample, parent, false);
++            }
++
++        TextView textView = convertView.findViewById(R.id.text_l);
++            textView.setText(getItem(position));
++
++        return convertView;
++    }
++}
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision 897dd04a3e1d9dcffc7232f8a8e4f0f6dbd2d17f)
++++ app/src/main/res/layout/activity_main.xml	(date 1558857990663)
+@@ -4,15 +4,17 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
++    android:background="#aeae"
+     tools:context=".MainActivity">
+ 
+-    <TextView
+-        android:layout_width="wrap_content"
++    <android.support.v4.view.ViewPager
++        android:id="@+id/peger"
++        app:layout_constraintTop_toTopOf="parent"
++        android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+-        android:text="Hello World!"
+-        app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
++        >
++
++    </android.support.v4.view.ViewPager>
++
+ 
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/SempelFragmen.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/mainactivity/musicplayer/example/com/peger/SempelFragmen.java	(date 1558860135602)
++++ app/src/main/java/mainactivity/musicplayer/example/com/peger/SempelFragmen.java	(date 1558860135602)
+@@ -0,0 +1,18 @@
++package mainactivity.musicplayer.example.com.peger;
++
++import android.os.Bundle;
++import android.support.annotation.NonNull;
++import android.support.annotation.Nullable;
++import android.support.v4.app.Fragment;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++
++public class SempelFragmen extends Fragment {
++
++    @Nullable
++    @Override
++    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
++        return inflater.inflate(R.layout.fragment_infleter, container, false);
++    }
++}
+Index: app/src/main/res/layout/fragment_infleter.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/fragment_infleter.xml	(date 1558856473332)
++++ app/src/main/res/layout/fragment_infleter.xml	(date 1558856473332)
+@@ -0,0 +1,16 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent"
++    xmlns:app="http://schemas.android.com/apk/res-auto"
++    android:background="#aea">
++
++    <ListView
++        android:layout_width="match_parent"
++        android:layout_height="wrap_content"
++        android:id="@+id/lestV"
++        app:layout_constraintTop_toTopOf="parent"
++        >
++    </ListView>
++
++</android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/layout/second_fragmint.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/second_fragmint.xml	(date 1558859789813)
++++ app/src/main/res/layout/second_fragmint.xml	(date 1558859789813)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="utf-8"?>
++<android.support.constraint.ConstraintLayout
++    xmlns:android="http://schemas.android.com/apk/res/android"
++    android:layout_width="match_parent"
++    android:layout_height="match_parent">
++
++</android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: unnamed.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- unnamed.patch	(date 1558853816164)
++++ unnamed.patch	(date 1558853816164)
+@@ -0,0 +1,85 @@
++Index: app/src/main/res/layout/activity_main.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/res/layout/activity_main.xml	(revision 897dd04a3e1d9dcffc7232f8a8e4f0f6dbd2d17f)
+++++ app/src/main/res/layout/activity_main.xml	(date 1558853247742)
++@@ -4,15 +4,8 @@
++     xmlns:tools="http://schemas.android.com/tools"
++     android:layout_width="match_parent"
++     android:layout_height="match_parent"
+++    android:id="@+id/container"
++     tools:context=".MainActivity">
++ 
++-    <TextView
++-        android:layout_width="wrap_content"
++-        android:layout_height="wrap_content"
++-        android:text="Hello World!"
++-        app:layout_constraintBottom_toBottomOf="parent"
++-        app:layout_constraintLeft_toLeftOf="parent"
++-        app:layout_constraintRight_toRightOf="parent"
++-        app:layout_constraintTop_toTopOf="parent" />
++ 
++ </android.support.constraint.ConstraintLayout>
++\ No newline at end of file
++Index: app/src/main/res/layout/fragment_infleter.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/res/layout/fragment_infleter.xml	(date 1558853728195)
+++++ app/src/main/res/layout/fragment_infleter.xml	(date 1558853728195)
++@@ -0,0 +1,9 @@
+++<?xml version="1.0" encoding="utf-8"?>
+++<android.support.constraint.ConstraintLayout
+++    xmlns:android="http://schemas.android.com/apk/res/android"
+++    android:layout_width="match_parent"
+++    android:layout_height="match_parent"
+++    android:background="#aea"
+++    >
+++
+++</android.support.constraint.ConstraintLayout>
++\ No newline at end of file
++Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558853547806)
+++++ app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558853547806)
++@@ -0,0 +1,19 @@
+++package mainactivity.musicplayer.example.com.peger;
+++
+++import android.os.Bundle;
+++import android.support.annotation.NonNull;
+++import android.support.annotation.Nullable;
+++import android.support.v4.app.Fragment;
+++import android.view.LayoutInflater;
+++import android.view.View;
+++import android.view.ViewGroup;
+++
+++public class SampleFragment extends Fragment {
+++
+++    @Nullable
+++    @Override
+++    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+++       View view = inflater.inflate(R.layout.fragment_infleter, container, false);
+++       return view;
+++    }
+++}
++Index: .idea/vcs.xml
++IDEA additional info:
++Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
++<+>UTF-8
++===================================================================
++--- .idea/vcs.xml	(date 1558852673455)
+++++ .idea/vcs.xml	(date 1558852673455)
++@@ -0,0 +1,6 @@
+++<?xml version="1.0" encoding="UTF-8"?>
+++<project version="4">
+++  <component name="VcsDirectoryMappings">
+++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+++  </component>
+++</project>
++\ No newline at end of file
+Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558857399971)
++++ app/src/main/java/mainactivity/musicplayer/example/com/peger/SampleFragment.java	(date 1558857399971)
+@@ -0,0 +1,41 @@
++package mainactivity.musicplayer.example.com.peger;
++
++import android.os.Bundle;
++import android.support.annotation.NonNull;
++import android.support.annotation.Nullable;
++import android.support.design.widget.BottomSheetDialogFragment;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.ListView;
++
++import java.util.ArrayList;
++import java.util.List;
++
++public class SampleFragment extends BottomSheetDialogFragment {
++
++    @Nullable
++    @Override
++    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
++       View view = inflater.inflate(R.layout.fragment_infleter, container, false);
++       return view;
++    }
++
++    @Override
++    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
++        super.onViewCreated(view, savedInstanceState);
++        ListView listView = view.findViewById(R.id.lestV);
++        listView.setAdapter(new Adaptar(getContext(), getSamole()));
++    }
++    private List<String> getSamole(){
++        List<String> list = new ArrayList<>();
++        list.add("Я тебя сьем");
++        list.add("Я тебя сьем1");
++        list.add("Я тебя сьем2");
++        list.add("Я тебя сьем3");
++        list.add("Я тебя сьем4");
++        list.add("Я тебя сьем5");
++        list.add("Я тебя сьем6");
++        return list;
++    }
++}
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 897dd04a3e1d9dcffc7232f8a8e4f0f6dbd2d17f)
++++ app/build.gradle	(date 1558857291450)
+@@ -21,6 +21,7 @@
+ dependencies {
+     implementation fileTree(dir: 'libs', include: ['*.jar'])
+     implementation 'com.android.support:appcompat-v7:28.0.0'
++    implementation 'com.android.support:design:28.0.0'
+     implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+     testImplementation 'junit:junit:4.12'
+     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+Index: app/src/main/java/mainactivity/musicplayer/example/com/peger/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/mainactivity/musicplayer/example/com/peger/MainActivity.java	(revision 897dd04a3e1d9dcffc7232f8a8e4f0f6dbd2d17f)
++++ app/src/main/java/mainactivity/musicplayer/example/com/peger/MainActivity.java	(date 1558859080654)
+@@ -1,13 +1,32 @@
+ package mainactivity.musicplayer.example.com.peger;
+ 
++import android.support.v4.app.Fragment;
++import android.support.v4.view.ViewPager;
+ import android.support.v7.app.AppCompatActivity;
+ import android.os.Bundle;
+ 
++import java.util.ArrayList;
++import java.util.List;
++
+ public class MainActivity extends AppCompatActivity {
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
++
++
++
++        ViewPager viewPager = findViewById(R.id.peger);
++        ViewPegerAdaptor viewPegerAdaptor = new ViewPegerAdaptor(getSupportFragmentManager());
++        viewPager.setAdapter(viewPegerAdaptor);
++
++        List<Fragment> list = new ArrayList<>();
++        list.add(new SampleFragment());
++        list.add(new SampleFragment());
++        list.add(new SampleFragment());
++        viewPegerAdaptor.setList(list);
++
++        viewPager.setAdapter(viewPegerAdaptor);
+     }
+ }
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/vcs.xml	(date 1558852673455)
++++ .idea/vcs.xml	(date 1558852673455)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
